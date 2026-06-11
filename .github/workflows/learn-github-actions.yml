@@ -2,7 +2,7 @@ name: Push-to-EC2
 on:
   push:
     branches:
-      - feature/aula21-31
+      - main
 
 jobs:
   deploy:
@@ -18,7 +18,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           ARGS: "-rltgoDzvO"
           SOURCE: "./"
-          REMOTE_HOST: "ec2-13-221-88-102.compute-1.amazonaws.com"
+          REMOTE_HOST: "@ec2-3-236-237-5.compute-1.amazonaws.com"
           REMOTE_USER: "ubuntu"
           TARGET: "/var/www/html/praticandop3/"
           EXCLUDE: "/vendor/, /node_modules/, .env, /storage/logs/, /storage/framework/"
