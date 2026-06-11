@@ -18,7 +18,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           ARGS: "-rltgoDzvO"
           SOURCE: "./"
+<<<<<<< HEAD
           REMOTE_HOST: "ec2-3-236-237-5.compute-1.amazonaws.com"
+=======
+          REMOTE_HOST: "ec2-3-236-237-5.compute-1.amazonaws.com"
+>>>>>>> 3043326 (att)
           REMOTE_USER: "ubuntu"
           TARGET: "/var/www/html/praticandop3/"
           EXCLUDE: "/vendor/, /node_modules/, .env, /storage/logs/, /storage/framework/"
