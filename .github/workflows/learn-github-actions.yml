@@ -18,7 +18,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           ARGS: "-rltgoDzvO"
           SOURCE: "./"
-          REMOTE_HOST: "@ec2-3-236-237-5.compute-1.amazonaws.com"
+          REMOTE_HOST: "ec2-3-236-237-5.compute-1.amazonaws.com"
           REMOTE_USER: "ubuntu"
           TARGET: "/var/www/html/praticandop3/"
           EXCLUDE: "/vendor/, /node_modules/, .env, /storage/logs/, /storage/framework/"
@@ -26,17 +26,14 @@ jobs:
       - name: Executing remote ssh commands
         uses: appleboy/ssh-action@master
         with:
-          host: "ec2-13-221-88-102.compute-1.amazonaws.com"
+          host: "ec2-3-236-237-5.compute-1.amazonaws.com"
           username: "ubuntu"
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /var/www/html/praticandop3/
-
             mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs
             chmod -R 775 storage bootstrap/cache
-
             composer install --no-dev --optimize-autoloader --ignore-platform-reqs
-
             php artisan cache:clear
             php artisan migrate --force
             php artisan config:cache
